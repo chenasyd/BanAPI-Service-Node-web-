@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "nickname": "femboy_coder",
+    "reason": "在sio2服务器里开挂",
+    "admin": "NDP关联封禁",
+    "isPermanent": true,
+    "startTime": "2025-04-26T10:04:21.851Z",
+    "endTime": null,
+    "isReleased": true
+  },
+  {
+    "id": 2,
+    "nickname": "glitcher_v2",
+    "reason": "在sio2服务器里开挂",
+    "admin": "NDP关联封禁",
+    "isPermanent": true,
+    "startTime": "2025-04-26T10:10:18.971Z",
+    "endTime": null,
+    "isReleased": false
+  },
+  {
+    "id": 3,
+    "nickname": "Hiujnqb",
+    "reason": "扬言要开户的xxs.偷东西",
+    "admin": "NDP关联封禁",
+    "isPermanent": true,
+    "startTime": "2025-05-04T08:48:54.971Z",
+    "endTime": null,
+    "isReleased": false
+  },
+  {
+    "id": 4,
+    "nickname": "jiuwei",
+    "reason": "搞破坏，分裂服务器",
+    "admin": "NDP关联封禁",
+    "isPermanent": true,
+    "startTime": "2025-06-14T16:36:24.971Z",
+    "endTime": null,
+    "isReleased": false
+  },
+  {
+    "id": 5,
+    "nickname": "ENTRTNANE",
+    "reason": "在匿名tian粉丝服内tnt炸建筑、放火烧房子、制造tnt陷阱等等，qq号：3816318420，相关证据：https://pan.baidu.com/s/1KoHYijuA4qwX6Jr15s1Vtw?pwd=phhk",
+    "admin": "NDP关联封禁",
+    "isPermanent": true,
+    "startTime": "2025-07-23T14:27:22.971Z",
+    "endTime": null,
+    "isReleased": false
+  },
+  {
+    "id": 6,
+    "nickname": "smooth_BBQ",
+    "reason": "捣乱，熊了超过十个服务器，开户多名服务器服主及相关人员，嚣张跋扈，在互联网上引战恶评，b站叫smooth_BBQ",
+    "admin": "NDP关联封禁",
+    "isPermanent": true,
+    "startTime": "2025-07-30T09:49:17.971Z",
+    "endTime": null,
+    "isReleased": false
+  },
+  {
+    "id": 7,
+    "nickname": "Tommy_Sakura",
+    "reason": "合伙作案",
+    "admin": "NDP关联封禁",
+    "isPermanent": true,
+    "startTime": "2025-07-30T18:26:15.971Z",
+    "endTime": null,
+    "isReleased": false
+  },
+  {
+    "id": 8,
+    "nickname": "Aishiyan_Doing",
+    "reason": "测试成功！",
+    "admin": "NDP关联封禁",
+    "isPermanent": true,
+    "startTime": "2025-08-01T18:26:15.971Z",
+    "endTime": null,
+    "isReleased": true
+  }
+]

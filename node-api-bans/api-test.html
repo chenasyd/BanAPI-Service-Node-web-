@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>API测试页面</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        pre { background: #f5f5f5; padding: 10px; border-radius: 5px; }
+        button { padding: 8px 15px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #45a049; }
+        input[type="text"] { width: 300px; padding: 8px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>封禁API测试</h1>
+
+    <div>
+        <h2>API密钥</h2>
+        <input type="text" id="apiKey" value="bans-api-secret-key-12345">
+    </div>
+
+    <div>
+        <h2>测试端点</h2>
+        <button onclick="testEndpoint('/bans')">获取所有封禁记录</button>
+        <button onclick="testEndpoint('/stats')">获取封禁统计</button>
+    </div>
+
+    <div>
+        <h2>添加封禁记录</h2>
+        <div>
+            <input type="text" id="nickname" placeholder="昵称" value="testuser"><br>
+            <input type="text" id="reason" placeholder="原因" value="测试封禁"><br>
+            <input type="text" id="admin" placeholder="管理员" value="admin1"><br>
+            <label><input type="checkbox" id="isPermanent"> 永久封禁</label><br>
+            <button onclick="addBan()">添加封禁</button>
+        </div>
+    </div>
+
+    <div>
+        <h2>响应结果</h2>
+        <pre id="result">等待测试...</pre>
+    </div>
+
+    <script>
+        function showError(message) {
+            document.getElementById('result').textContent = '错误: ' + message;
+            console.error(message);
+        }
+
+        function testEndpoint(endpoint) {
+            const apiKey = document.getElementById('apiKey').value;
+            document.getElementById('result').textContent = '请求中...';
+
+            fetch(`http://localhost:5000${endpoint}`, {
+                headers: {
+                    'x-api-key': apiKey
+                },
+                mode: 'cors'
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => {
+                        throw new Error(err.error || `HTTP错误! 状态码: ${response.status}`);
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                showError(error.message);
+                if (error.message.includes('Failed to fetch')) {
+                    showError('连接API失败，请确保服务正在运行 (node app.js)');
+                }
+            });
+        }
+
+        function addBan() {
+            const apiKey = document.getElementById('apiKey').value;
+            const data = {
+                nickname: document.getElementById('nickname').value || 'testuser',
+                reason: document.getElementById('reason').value || '测试封禁',
+                admin: document.getElementById('admin').value || 'admin1',
+                isPermanent: document.getElementById('isPermanent').checked
+            };
+
+            document.getElementById('result').textContent = '提交中...';
+
+            fetch('http://localhost:5000/ban', {
+                method: 'POST',
+                headers: {
+                    'x-api-key': apiKey,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data),
+                mode: 'cors'
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => {
+                        throw new Error(err.error || `HTTP错误! 状态码: ${response.status}`);
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                showError(error.message);
+            });
+        }
+    </script>
+</body>
+</html>
